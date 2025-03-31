@@ -1,0 +1,158 @@
+[
+  {
+    "id": 1,
+    "title": "Python Programming Masterclass",
+    "instructor": "Dr. Sarah Johnson",
+    "modules": [
+      {
+        "title": "Python Basics",
+        "video": {
+          "title": "Introduction to Python",
+          "url": "https://youtu.be/_uQrJ0TkZlc"
+        },
+        "reading": {
+          "title": "Python Syntax Guide",
+          "url": "reading/python-basics",
+          "content": "<h2>Introduction to Python</h2><p>Python is an interpreted, high-level programming language...</p><h3>Key Features:</h3><ul><li>Simple syntax</li><li>Dynamically typed</li><li>Extensive libraries</li></ul>"
+        },
+        
+          "assessment": {
+            "title": "Python Basics Quiz",
+            "url": "quiz/python-basics",
+            "questions": [
+              {
+                "question": "Which symbol is used for comments in Python?",
+                "type": "single",
+                "options": ["//", "#", "/*", "--"],
+                "answer": 1,
+                "explanation": "Python uses # for single-line comments."
+              },
+              {
+                "question": "Which are mutable Python data structures?",
+                "type": "multiple",
+                "options": ["List", "Tuple", "Dictionary", "String"],
+                "answers": [0, 2],
+                "explanation": "Lists and Dictionaries are mutable in Python."
+              }
+            ]
+          }
+        
+      },
+      {
+        "title": "Data Structures",
+        "video": {
+          "title": "Lists and Dictionaries",
+          "url": "https://youtu.be/rZjhId0VkuY"
+        },
+        "reading": {
+          "title": "Data Structures Guide",
+          "url": "reading/python-data-structures",
+          "content": "<h2>Python Data Structures</h2><p>Essential structures for organizing data...</p>"
+        },
+        "assessment": {
+          "title": "Data Structures Quiz",
+          "url": "quiz/python-data-structures",
+          "questions": [
+            {
+              "question": "Which is mutable: list or tuple?",
+              "options": ["List", "Tuple", "Both", "Neither"],
+              "answer": 0,
+              "explanation": "Lists are mutable while tuples are immutable."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Web Development Fundamentals",
+    "instructor": "Prof. Michael Chen",
+    "modules": [
+      {
+        "title": "HTML Basics",
+        "video": {
+          "title": "HTML Crash Course",
+          "url": "https://youtu.be/pQN-pnXPaVg"
+        },
+        "reading": {
+          "title": "HTML5 Reference",
+          "url": "reading/html-basics",
+          "content": "<h2>HTML Fundamentals</h2><p>The building blocks of web pages...</p>"
+        },
+        "assessment": {
+          "title": "HTML Quiz",
+          "url": "quiz/html-basics",
+          "questions": [
+            {
+              "question": "What does HTML stand for?",
+              "options": [
+                "Hyperlinks and Text Markup Language",
+                "Home Tool Markup Language",
+                "Hyper Text Markup Language",
+                "Hyper Text Marking Language"
+              ],
+              "answer": 2,
+              "explanation": "HTML stands for Hyper Text Markup Language."
+            }
+          ]
+        }
+      },
+      {
+        "title": "CSS Fundamentals",
+        "video": {
+          "title": "CSS Tutorial",
+          "url": "https://youtu.be/yfoY53QXEnI"
+        },
+        "reading": {
+          "title": "CSS Complete Guide",
+          "url": "reading/css-basics",
+          "content": "<h2>Styling Web Pages</h2><p>CSS makes websites visually appealing...</p>"
+        },
+        "assessment": {
+          "title": "CSS Quiz",
+          "url": "quiz/css-basics",
+          "questions": [
+            {
+              "question": "Which property changes text color?",
+              "options": ["text-color", "font-color", "color", "text-style"],
+              "answer": 2,
+              "explanation": "The 'color' property sets text color."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Data Science Essentials",
+    "instructor": "Dr. Emily Rodriguez",
+    "modules": [
+      {
+        "title": "Pandas Basics",
+        "video": {
+          "title": "Pandas Tutorial",
+          "url": "https://youtu.be/dcqPhpY7tWk"
+        },
+        "reading": {
+          "title": "Pandas Documentation",
+          "url": "reading/pandas-basics",
+          "content": "<h2>Data Analysis with Pandas</h2><p>Powerful data manipulation tools...</p>"
+        },
+        "assessment": {
+          "title": "Pandas Quiz",
+          "url": "quiz/pandas-basics",
+          "questions": [
+            {
+              "question": "What is the primary Pandas data structure?",
+              "options": ["Array", "DataFrame", "Matrix", "Collection"],
+              "answer": 1,
+              "explanation": "DataFrame is the primary 2D data structure."
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

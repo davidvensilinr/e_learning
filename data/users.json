@@ -1,0 +1,139 @@
+[
+  {
+    "name": "user1",
+    "email": "user1@gmail.com",
+    "password": "user1",
+    "enrolled_courses": [
+      1,
+      3,
+      2,
+      4
+    ],
+    "quiz_attempts": [
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 1,
+        "timestamp": "2025-03-28T16:00:22.698292"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 1,
+        "timestamp": "2025-03-28T16:04:52.489365"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:22:13.648618"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:22:47.235795"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:26:23.842396"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:27:36.886766"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:36:10.548060"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:36:29.163857"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:42:02.404605"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:50:23.927924"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:50:42.799906"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T00:58:03.923970"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T01:00:50.440950"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-basics",
+        "score": 0,
+        "total": 2,
+        "timestamp": "2025-04-01T01:06:06.480705"
+      },
+      {
+        "course_id": 1,
+        "quiz_id": "python-data-structures",
+        "score": 1,
+        "total": 1,
+        "timestamp": "2025-04-01T01:06:20.987065"
+      }
+    ]
+  },
+  {
+    "name": "user2",
+    "email": "user2@gmail.com",
+    "password": "user2",
+    "enrolled_courses": [
+      1,
+      2
+    ]
+  },
+  {
+    "name": "user3",
+    "email": "user3@gmail.com",
+    "password": "user3",
+    "enrolled_courses": [
+      1,
+      2
+    ],
+    "quiz_attempts": []
+  }
+]
