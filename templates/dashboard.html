@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Coursera Lite</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .course-card {
+            transition: transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/dashboard">
+                <i class="fas fa-graduation-cap me-2"></i>Coursera Lite
+            </a>
+            <div class="d-flex">
+                <span class="navbar-text text-white me-3">
+                    <i class="fas fa-user me-1"></i> {{ user_email }}
+                </span>
+                <a href="/logout" class="btn btn-outline-light">
+                    <i class="fas fa-sign-out-alt me-1"></i> Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="container py-5">
+        <h1 class="mb-4">Available Courses</h1>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for course in courses %}
+            <div class="col">
+                <div class="card course-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ course.title }}</h5>
+                        <p class="text-muted">Instructor: {{ course.instructor }}</p>
+                        <p class="text-muted">{{ course.modules|length }} modules</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        {% if course.id in enrolled_courses %}
+                            <a href="/course/{{ course.id }}" class="btn btn-success w-100">
+                                <i class="fas fa-play me-1"></i> Go to Course
+                            </a>
+                        {% else %}
+                            <button class="btn btn-outline-primary w-100 enroll-btn" 
+                                    data-course-id="{{ course.id }}">
+                                <i class="fas fa-bookmark me-1"></i> Enroll
+                            </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- JavaScript for Enrollment -->
+    <script>
+        document.querySelectorAll('.enroll-btn').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const courseId = e.target.dataset.courseId;
+                try {
+                    const response = await fetch(`/enroll/${courseId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Reload to show the "Go to Course" button
+                        window.location.reload();
+                    } else {
+                        alert('Enrollment failed. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred during enrollment.');
+                }
+            });
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

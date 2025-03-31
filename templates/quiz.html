@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz.title }} | Coursera Lite</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        .question-card {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option-label:hover {
+            background-color: #f0f7ff;
+        }
+        .option-label input {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .question-type-badge {
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-container">
+            <h1>{{ quiz.title }}</h1>
+            <p class="lead mb-4">Total questions: {{ quiz.questions|length }}</p>
+            
+            <form id="quizForm" method="POST" action="{{ url_for('quiz_page', quiz_id=quiz.url.split('/')[-1]) }}">
+                {% for question in quiz.questions %}
+                <div class="question-card" id="question-{{ loop.index }}">
+                    <h4>
+                        Question {{ loop.index }}: {{ question.question }}
+                        <span class="badge bg-secondary question-type-badge">
+                            {% if question.type == "multiple" %}Multiple Answers{% else %}Single Answer{% endif %}
+                        </span>
+                    </h4>
+                    <!-- In the options section of quiz.html -->
+<div class="options">
+    {% for option in question.options %}
+    <label class="option-label">
+        <input type="{% if question.type == 'multiple' %}checkbox{% else %}radio{% endif %}" 
+               name="q{{ loop.index }}" 
+               value="{{ loop.index0 }}"
+               {% if question.type != 'multiple' %}required{% endif %}>
+        {{ option }}
+    </label>
+    {% endfor %}
+</div>
+                </div>
+                {% endfor %}
+                
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg py-3" id="submitBtn">
+                        <i class="fas fa-paper-plane me-1"></i> Submit Quiz
+                    </button>
+                    <a href="{{ url_for('course_detail', course_id=course_id) }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-times me-1"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('quizForm');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            form.addEventListener('submit', function(e) {
+                // Validate all questions are answered
+                const questions = document.querySelectorAll('.question-card');
+                let allAnswered = true;
+                let firstUnanswered = null;
+                
+                questions.forEach((question, index) => {
+                    const questionNumber = index + 1;
+                    const inputs = question.querySelectorAll('input[type="radio"]');
+                    const checked = Array.from(inputs).some(input => input.checked);
+                    
+                    // Only validate radio buttons (single answer questions)
+                    if (inputs.length > 0 && !checked) {
+                        allAnswered = false;
+                        question.style.borderLeft = '4px solid #dc3545';
+                        if (!firstUnanswered) firstUnanswered = question;
+                    } else {
+                        question.style.borderLeft = '4px solid #0056b3';
+                    }
+                });
+                
+                if (!allAnswered) {
+                    e.preventDefault();
+                    firstUnanswered.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                    
+                    const alert = document.createElement('div');
+                    alert.className = 'alert alert-danger position-fixed top-0 start-50 translate-middle-x mt-3';
+                    alert.textContent = 'Please answer all required questions before submitting.';
+                    document.body.appendChild(alert);
+                    
+                    setTimeout(() => {
+                        alert.remove();
+                    }, 3000);
+                    
+                    return;
+                }
+                
+                // If all answered, proceed with submission
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Submitting...';
+            });
+        });
+    </script>
+</body>
+</html>
